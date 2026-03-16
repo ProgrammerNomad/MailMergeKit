@@ -9,11 +9,8 @@ namespace MailMergeKit.WordAddin
 {
     partial class ThisAddIn
     {
-        private System.ComponentModel.IContainer components = null;
-
-        private void InitializeComponent()
+        internal void InternalStartup()
         {
-            components = new System.ComponentModel.Container();
         }
     }
 }

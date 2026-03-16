@@ -44,19 +44,5 @@ namespace MailMergeKit.WordAddin
                 // Suppress shutdown logging errors
             }
         }
-
-        #region VSTO generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InternalStartup()
-        {
-            this.Startup += new System.EventHandler(ThisAddIn_Startup);
-            this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
-        }
-
-        #endregion
     }
 }
