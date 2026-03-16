@@ -45,11 +45,6 @@ namespace MailMergeKit.WordAddin
             }
         }
 
-        protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
-        {
-            return new Ribbon.MailMergeRibbon();
-        }
-
         #region VSTO generated code
 
         /// <summary>

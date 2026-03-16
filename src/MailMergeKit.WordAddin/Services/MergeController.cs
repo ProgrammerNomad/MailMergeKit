@@ -55,7 +55,7 @@ namespace MailMergeKit.WordAddin.Services
                 // Process each record sequentially (COM is single-threaded!)
                 for (int i = 1; i <= dataSource.RecordCount; i++)
                 {
-                    dataSource.ActiveRecord = i;
+                    dataSource.ActiveRecord = (Word.WdMailMergeActiveRecord)i;
 
                     try
                     {

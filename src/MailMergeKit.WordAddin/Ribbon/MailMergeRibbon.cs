@@ -11,7 +11,7 @@ using MailMergeKit.WordAddin.UI;
 namespace MailMergeKit.WordAddin.Ribbon
 {
     [ComVisible(true)]
-    public class MailMergeRibbon : Office.IRibbonExtensibility
+    public partial class MailMergeRibbon : Office.IRibbonExtensibility
     {
         private Office.IRibbonUI ribbon;
 
@@ -45,8 +45,8 @@ namespace MailMergeKit.WordAddin.Ribbon
         {
             try
             {
-                var app = Globals.ThisAddIn.Application;
-                var doc = app.ActiveDocument;
+                var wordApp = (Word.Application)System.Runtime.InteropServices.Marshal.GetActiveObject("Word.Application");
+                var doc = wordApp.ActiveDocument;
 
                 // Validate document has mail merge setup
                 if (doc.MailMerge == null || doc.MailMerge.DataSource == null)
