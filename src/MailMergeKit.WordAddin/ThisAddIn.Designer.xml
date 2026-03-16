@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AddIn xmlns="http://schemas.microsoft.com/office/2004/02/vsto/addin">
+  <Title>MailMergeKit</Title>
+  <Description>A powerful Microsoft Word Mail Merge extension for Outlook draft emails</Description>
+  <HostApplication>Word</HostApplication>
+  <Property Name="HostVersion">15.0.0.0</Property>
+  <Property Name="LoadBehavior">3</Property>
+</AddIn>

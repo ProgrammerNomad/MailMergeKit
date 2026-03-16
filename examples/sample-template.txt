@@ -1,0 +1,67 @@
+====================================
+MailMergeKit - Sample Email Template
+====================================
+
+This is an example of how to structure your Word document for mail merge.
+
+Instructions:
+1. Copy the content below into a new Word document
+2. Set up mail merge with the sample-data.csv file
+3. Insert merge fields where indicated
+4. Use MailMergeKit to create Outlook drafts
+
+====================================
+
+Subject (to configure in MailMergeKit):
+Domain «Domain» expires on «ExpiryDate»
+
+====================================
+
+Email Body:
+
+Dear «FirstName» «LastName»,
+
+This is a reminder that your domain «Domain» registered with «Company» will expire on «ExpiryDate».
+
+To ensure uninterrupted service, please renew your domain before the expiration date.
+
+What happens if you don't renew:
+• Your website will go offline
+• Email services will stop working
+• You may lose your domain name
+
+Renewal is simple:
+1. Log into your account
+2. Navigate to domain management
+3. Click "Renew" next to «Domain»
+4. Complete the payment
+
+If you have any questions, please don't hesitate to contact us.
+
+Best regards,
+The «Company» Support Team
+
+====================================
+
+Tips for Your Own Templates:
+
+1. Use merge fields with the «FieldName» format
+2. Keep your message clear and concise
+3. Test with a small sample first (2-3 recipients)
+4. Review drafts in Outlook before sending
+5. Personalize subject lines for better open rates
+
+====================================
+
+Common Merge Fields:
+
+«FirstName» - Recipient's first name
+«LastName» - Recipient's last name
+«Email» - Recipient's email address
+«Company» - Company name
+«Domain» - Domain name
+«ExpiryDate» - Expiration date
+
+You can create any field names in your data source!
+
+====================================

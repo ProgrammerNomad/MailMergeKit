@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabMailings">
+        <group id="MailMergeKitGroup" 
+               label="MailMergeKit" 
+               insertAfterMso="GroupMailMergeStartMerge">
+          <button id="btnSendViaMailMergeKit"
+                  label="Send via MailMergeKit"
+                  size="large"
+                  onAction="OnSendViaMailMergeKit"
+                  imageMso="OutlookSendReceive"
+                  screentip="Send Mail Merge via Outlook Drafts"
+                  supertip="Creates personalized Outlook draft emails from your mail merge data. Supports subject personalization, attachments, and CC/BCC fields." />
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

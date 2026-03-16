@@ -1,0 +1,6 @@
+Email,FirstName,LastName,Company,Domain,ExpiryDate
+john@example.com,John,Smith,Example Corp,example.com,2026-04-15
+jane@company.com,Jane,Doe,Company Inc,company.com,2026-05-20
+bob@business.net,Bob,Johnson,Business LLC,business.net,2026-06-10
+alice@enterprise.org,Alice,Williams,Enterprise Ltd,enterprise.org,2026-07-05
+charlie@startup.io,Charlie,Brown,Startup Co,startup.io,2026-08-12
