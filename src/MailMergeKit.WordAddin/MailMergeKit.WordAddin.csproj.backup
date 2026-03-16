@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,6 +36,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -141,27 +143,15 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartAction>Program</StartAction>
     <StartProgram>C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE</StartProgram>
-    <StartingProgram>C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE</StartingProgram>
   </PropertyGroup>
   <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>MailMergeKit.WordAddin_TemporaryKey.pfx</ManifestKeyFile>
-    <SignManifests>true</SignManifests></PropertyGroup>
+  </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>2EBAAA58CBB0C6FFED01188FFD5766D62DF7274E</ManifestCertificateThumbprint>
-    <PublishUrl>publish\</PublishUrl>
-    <InstallUrl>
-    </InstallUrl>
-    <TargetCulture>en</TargetCulture>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled><IsWebBootstrapper>false</IsWebBootstrapper>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <PublisherName>
-    </PublisherName>
-    <ProductName>MailMergeKit</ProductName>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PublishUrl>publish\</PublishUrl>
