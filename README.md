@@ -207,7 +207,7 @@ Word's built-in Mail Merge can send emails, but it lacks:
 | **Installer** | WiX Toolset / WixSharp | MIT | MSI installer generation |
 | **HTML Processing** | HtmlAgilityPack | MIT | HTML cleanup and optimization |
 
-> See [TECHNICAL_STACK.md](TECHNICAL_STACK.md) for detailed framework comparison and code examples.
+> See [docs/TECHNICAL_STACK.md](docs/TECHNICAL_STACK.md) for detailed framework comparison and code examples.
 
 ---
 
@@ -612,7 +612,7 @@ Or in Visual Studio: `Ctrl+Shift+B`
 
 **Total Cost:** $0.00 (all open source)
 
-See [TECHNICAL_STACK.md](TECHNICAL_STACK.md) for code examples and implementation details.
+See [docs/TECHNICAL_STACK.md](docs/TECHNICAL_STACK.md) for code examples and implementation details.
 
 ### Development Timeline
 
@@ -638,52 +638,152 @@ This proves the concept before adding attachments, validation, logging, etc.
 
 ## Project Structure
 
+### Current Structure (v0.0.1 - Prototype)
+
+Simple monolithic structure for rapid prototyping:
+
 ```
 MailMergeKit/
 │
 ├── MailMergeKit.sln                 # Visual Studio solution
 │
-├── MailMergeKit.WordAddin/          # Main add-in project
-│   ├── Ribbon.cs                    # Ribbon UI definition
-│   ├── MergeController.cs           # Merge logic controller
-│   ├── OutlookMailer.cs             # Outlook email generator
-│   ├── SettingsForm.cs              # Configuration dialog
-│   ├── ThisAddIn.cs                 # VSTO add-in entry point
-│   ├── Logger.cs                    # Error logging system
-│   ├── MergeStateManager.cs         # Checkpoint/resume functionality
-│   └── Properties/
-│       └── AssemblyInfo.cs
+├── src/
+│   └── MailMergeKit.WordAddin/      # Single VSTO add-in project
+│       ├── ThisAddIn.cs             # VSTO entry point
+│       ├── Ribbon/
+│       │   └── MailMergeRibbon.cs   # Word ribbon UI
+│       ├── Services/
+│       │   ├── MergeController.cs   # Merge logic
+│       │   └── OutlookMailer.cs     # Email generation
+│       ├── Models/
+│       │   └── RecipientData.cs     # Data models
+│       ├── UI/
+│       │   └── SettingsForm.cs      # Configuration dialog
+│       └── Properties/
+│           └── AssemblyInfo.cs
 │
-├── Installer/                       # MSI installer project
-│   ├── Product.wxs                  # WiX installer definition
-│   └── setup.bat                    # Build script
+├── docs/                            # Documentation
+│   ├── architecture.md              # Architecture guide
+│   ├── user-guide.md                # End-user documentation
+│   ├── developer-guide.md           # Developer documentation
+│   ├── TECHNICAL_STACK.md           # Framework comparison
+│   └── CHANGELOG.md                 # Version history
 │
 ├── examples/                        # Sample templates and data
 │   ├── sample-template.docx         # Example merge template
 │   ├── sample-data.xlsx             # Example data source
-│   └── demo.gif                     # Product demonstration
+│   └── attachments/                 # Sample attachment files
 │
-├── docs/                            # Documentation
-│   ├── user-guide.md
-│   ├── developer-guide.md
-│   ├── performance-guide.md         # Large campaign best practices
-│   └── screenshots/
+├── installer/                       # MSI installer (v0.1.0+)
+│   └── MailMergeKit.Installer/
 │
-├── logs/                            # Merge operation logs (created at runtime)
-│   ├── merge-log.txt                # Detailed merge logs
-│   └── error-log.txt                # Error tracking
-│
-├── plugins/                         # Plugin architecture (future)
-│   ├── tracking-plugin/
-│   └── pdf-plugin/
-│
-├── tests/                           # Unit tests (future)
+├── tests/                           # Unit tests (v0.1.0+)
+│   └── MailMergeKit.Tests/
 │
 ├── README.md                        # This file
 ├── LICENSE                          # License file
-├── CHANGELOG.md                     # Version history
 └── .gitignore
 ```
+
+### Target Structure (v1.0 - Clean Architecture)
+
+Enterprise-grade layered architecture following SOLID principles:
+
+```
+MailMergeKit/
+│
+├── MailMergeKit.sln                 # Visual Studio solution
+│
+├── src/
+│   │
+│   ├── MailMergeKit.WordAddin/      # 📱 Presentation Layer
+│   │   ├── Addin/
+│   │   │   ├── ThisAddIn.cs         # VSTO entry point
+│   │   │   └── AddinBootstrap.cs    # DI container setup
+│   │   ├── Ribbon/
+│   │   │   ├── MailMergeRibbon.cs   # Word ribbon UI
+│   │   │   └── MailMergeRibbon.Designer.cs
+│   │   └── UI/
+│   │       ├── SettingsForm.cs      # Configuration dialog
+│   │       ├── PreviewForm.cs       # Email preview
+│   │       └── ProgressForm.cs      # Merge progress UI
+│   │
+│   ├── MailMergeKit.Application/    # 🔄 Application Layer
+│   │   ├── Controllers/
+│   │   │   └── MergeController.cs   # Main workflow controller
+│   │   └── UseCases/
+│   │       ├── GenerateDraftEmails.cs  # Primary use case
+│   │       └── PreviewMerge.cs      # Preview use case
+│   │
+│   ├── MailMergeKit.Core/           # 💎 Core/Domain Layer
+│   │   ├── Models/
+│   │   │   ├── RecipientData.cs     # Recipient model
+│   │   │   ├── MergeSettings.cs     # Configuration model
+│   │   │   └── AttachmentInfo.cs    # Attachment metadata
+│   │   ├── Services/
+│   │   │   ├── MergeEngine.cs       # Core merge logic
+│   │   │   └── AttachmentResolver.cs # Path resolution
+│   │   ├── Validation/
+│   │   │   └── RecipientValidator.cs # FluentValidation rules
+│   │   └── Interfaces/
+│   │       ├── IEmailService.cs     # Email contract
+│   │       ├── IDataSourceReader.cs # Data source contract
+│   │       └── IMergeEngine.cs      # Merge engine contract
+│   │
+│   └── MailMergeKit.Infrastructure/ # 🔌 Infrastructure Layer
+│       ├── Outlook/
+│       │   ├── OutlookService.cs    # Outlook COM implementation
+│       │   └── OutlookFactory.cs    # COM object factory
+│       ├── Word/
+│       │   └── WordMergeReader.cs   # Word data source reader
+│       ├── DataSources/
+│       │   ├── CsvReaderService.cs  # CSV reader (CsvHelper)
+│       │   └── ExcelReaderService.cs # Excel reader (ClosedXML)
+│       └── Logging/
+│           └── SerilogSetup.cs      # Logging configuration
+│
+├── installer/
+│   └── MailMergeKit.Installer/      # 📦 WixSharp installer
+│       ├── Setup.cs                 # Installer definition
+│       └── icon.ico                 # Application icon
+│
+├── tests/
+│   └── MailMergeKit.Tests/          # 🧪 Unit & integration tests
+│       ├── Core/
+│       │   ├── MergeEngineTests.cs
+│       │   └── ValidatorTests.cs
+│       └── Infrastructure/
+│           └── OutlookServiceTests.cs
+│
+├── examples/                        # 📄 Sample data and templates
+│   ├── sample-template.docx
+│   ├── sample-data.xlsx
+│   └── attachments/
+│
+├── docs/                            # 📚 Documentation
+│   ├── architecture.md              # Architecture guide
+│   ├── user-guide.md                # End-user guide
+│   ├── developer-guide.md           # Developer guide
+│   ├── TECHNICAL_STACK.md           # Framework comparison
+│   └── CHANGELOG.md                 # Version history
+│
+├── README.md                        # This file
+├── LICENSE                          # MIT License
+└── .gitignore
+```
+
+### Layer Responsibilities
+
+| Layer | Purpose | Dependencies | Example |
+|-------|---------|--------------|---------|
+| **WordAddin** | UI only | Application | Ribbon buttons, dialogs |
+| **Application** | Workflows | Core | Controllers, use cases |
+| **Core** | Business logic | None! | Models, interfaces, validation |
+| **Infrastructure** | External systems | Core (interfaces) | Outlook COM, file I/O |
+
+**Key Principle:** Core has NO dependencies - it's pure business logic.
+
+See [docs/architecture.md](docs/architecture.md) for complete architectural details and migration path.
 
 ---
 
@@ -838,7 +938,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [User Guide](docs/user-guide.md)
 - [Developer Guide](docs/developer-guide.md)
-- [FAQ](docs/faq.md)
+- [Architecture Guide](docs/architecture.md)
+- [Technical Stack](docs/TECHNICAL_STACK.md)
+- [Changelog](docs/CHANGELOG.md)
 
 ### Getting Help
 
