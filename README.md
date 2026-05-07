@@ -1,6 +1,6 @@
 # MailMergeKit
 
-> A Microsoft Word add-in that creates personalized Outlook draft emails using Word's mail merge data source — giving you full review control before sending.
+> A Microsoft Word add-in that creates personalized Outlook draft emails using Word's mail merge data source - giving you full review control before sending.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.0.1-orange.svg)](https://github.com/ProgrammerNomad/MailMergeKit/releases/tag/v0.0.1)
@@ -11,7 +11,7 @@
 
 ## What It Does
 
-MailMergeKit adds a **"Send via MailMergeKit"** button to Word's **Mailings** tab. When clicked, it reads your Word mail merge data source and creates one **Outlook draft email per recipient** — personalized and ready to review before you send anything.
+MailMergeKit adds a **"Send via MailMergeKit"** button to Word's **Mailings** tab. When clicked, it reads your Word mail merge data source and creates one **Outlook draft email per recipient** - personalized and ready to review before you send anything.
 
 **No SMTP setup. No cloud services. Everything runs locally using your existing Outlook account.**
 
@@ -19,14 +19,14 @@ MailMergeKit adds a **"Send via MailMergeKit"** button to Word's **Mailings** ta
 
 ## Features (v0.0.1)
 
-- **Word ribbon button** — appears in the Mailings tab, zero extra setup
-- **Reads Word's native mail merge data source** — works with Excel, CSV, Access, or any source Word supports
-- **Personalized subject lines** — use merge fields like `Hello «FirstName»` in the subject
-- **CC / BCC support** — map columns from your data source
-- **Attachment support** — static file path per recipient (semicolon-separated for multiple files)
-- **Draft mode** — all emails go to Outlook Drafts so you review before sending
-- **Settings dialog** — pick your email field and subject template from a simple UI
-- **100% local** — no data leaves your machine
+- **Word ribbon button** - appears in the Mailings tab, zero extra setup
+- **Reads Word's native mail merge data source** - works with Excel, CSV, Access, or any source Word supports
+- **Personalized subject lines** - use merge fields like `Hello «FirstName»` in the subject
+- **CC / BCC support** - map columns from your data source
+- **Attachment support** - static file path per recipient (semicolon-separated for multiple files)
+- **Draft mode** - all emails go to Outlook Drafts so you review before sending
+- **Settings dialog** - pick your email field and subject template from a simple UI
+- **100% local** - no data leaves your machine
 
 ---
 
@@ -37,7 +37,7 @@ MailMergeKit adds a **"Send via MailMergeKit"** button to Word's **Mailings** ta
 | **OS** | Windows 10 or later |
 | **Word** | Microsoft Word 2016 / 2019 / 2021 / 365 (desktop) |
 | **Outlook** | Microsoft Outlook 2016 / 2019 / 2021 / 365 (desktop, must be open) |
-| **Runtime** | [VSTO Runtime](https://aka.ms/vsto-runtime) — installed automatically by setup.exe |
+| **Runtime** | [VSTO Runtime](https://aka.ms/vsto-runtime) - installed automatically by setup.exe |
 
 > **Web versions of Word/Outlook (browser) are not supported.** Requires the desktop Office apps installed on Windows.
 
@@ -49,17 +49,17 @@ MailMergeKit adds a **"Send via MailMergeKit"** button to Word's **Mailings** ta
 2. Download **`MailMergeKit-v0.0.1-installer.zip`**
 3. Extract the zip
 4. Run **`setup.exe`**
-5. Follow the prompts — the VSTO runtime installs automatically if missing
+5. Follow the prompts - the VSTO runtime installs automatically if missing
 6. Open (or restart) Microsoft Word
-7. Go to the **Mailings** tab — you'll see the **MailMergeKit** section
+7. Go to the **Mailings** tab - you'll see the **MailMergeKit** section
 
-> **Security note:** Windows may show a warning because the installer is signed with a self-signed certificate. Click **Install** to proceed — this is normal for open-source tools without a paid code-signing certificate.
+> **Security note:** Windows may show a warning because the installer is signed with a self-signed certificate. Click **Install** to proceed - this is normal for open-source tools without a paid code-signing certificate.
 
 ---
 
 ## How to Use
 
-### Step 1 — Set up your Word document
+### Step 1 - Set up your Word document
 
 1. Open Word and write your email as a document
 2. Go to **Mailings → Select Recipients** and connect your data source (Excel, CSV, etc.)
@@ -75,18 +75,18 @@ MailMergeKit adds a **"Send via MailMergeKit"** button to Word's **Mailings** ta
 | `BCC` | No | `archive@example.com` |
 | `Attachment` | No | `invoice.pdf` or `invoice.pdf;receipt.pdf` |
 
-### Step 2 — Run MailMergeKit
+### Step 2 - Run MailMergeKit
 
 1. Click **Mailings → Send via MailMergeKit**
 2. A settings dialog opens showing all fields from your data source
 3. Select the column that contains email addresses (e.g. `Email`)
-4. Enter a subject template — you can use merge field names in `«»` brackets, e.g.:
+4. Enter a subject template - you can use merge field names in `«»` brackets, e.g.:
    ```
    Your domain «Domain» expires on «ExpiryDate»
    ```
 5. Click **OK**
 
-### Step 3 — Review and send
+### Step 3 - Review and send
 
 1. Open Outlook
 2. Go to your **Drafts** folder
@@ -106,12 +106,12 @@ MailMergeKit adds a **"Send via MailMergeKit"** button to Word's **Mailings** ta
 
 **Subject template:**
 ```
-Hi «FirstName» — your domain «Domain» expires on «ExpiryDate»
+Hi «FirstName» - your domain «Domain» expires on «ExpiryDate»
 ```
 
 **Result in Outlook Drafts:**
-- Email 1 to `john@example.com` — Subject: `Hi John — your domain example.com expires on 2026-06-01`
-- Email 2 to `jane@company.com` — Subject: `Hi Jane — your domain company.com expires on 2026-07-15`
+- Email 1 to `john@example.com` - Subject: `Hi John - your domain example.com expires on 2026-06-01`
+- Email 2 to `jane@company.com` - Subject: `Hi Jane - your domain company.com expires on 2026-07-15`
 
 ---
 
@@ -123,8 +123,8 @@ This is an early prototype. The following are **not yet implemented:**
 - No progress bar during merge
 - No test email mode (send to yourself first)
 - No retry on failure
-- Body merge uses Word's content as-is — complex field formatting may vary
-- No undo — drafts must be deleted manually if something goes wrong
+- Body merge uses Word's content as-is - complex field formatting may vary
+- No undo - drafts must be deleted manually if something goes wrong
 
 See [GETTING_STARTED.md](GETTING_STARTED.md) for the full known issues list.
 
@@ -164,7 +164,7 @@ cd MailMergeKit
 
 1. Open `MailMergeKit.sln` in Visual Studio 2022
 2. Press `Ctrl+Shift+B` to build
-3. Press `F5` — Word launches with the add-in loaded for debugging
+3. Press `F5` - Word launches with the add-in loaded for debugging
 
 ### Generate a new installer
 
@@ -217,7 +217,7 @@ Contributions are welcome. Please open an issue first to discuss what you'd like
 
 ## License
 
-[MIT](LICENSE) — free to use, modify, and distribute.
+[MIT](LICENSE) - free to use, modify, and distribute.
 
 ---
 
