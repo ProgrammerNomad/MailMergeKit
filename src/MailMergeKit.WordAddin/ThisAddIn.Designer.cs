@@ -7,12 +7,43 @@
 #pragma warning disable 414
 namespace MailMergeKit.WordAddin
 {
-    partial class ThisAddIn
+    [Microsoft.VisualStudio.Tools.Applications.Runtime.StartupObjectAttribute(0)]
+    [global::System.Security.Permissions.PermissionSetAttribute(global::System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
+    public sealed partial class ThisAddIn : Microsoft.Office.Tools.AddInBase
     {
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public ThisAddIn(global::Microsoft.Office.Tools.Word.ApplicationFactory factory, global::System.IServiceProvider serviceProvider) :
+            base(factory, serviceProvider, "AddIn", "ThisAddIn")
+        {
+            Globals.Factory = factory;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        protected override void Initialize()
+        {
+            base.Initialize();
+            Globals.ThisAddIn = this;
+            global::System.Windows.Forms.Application.EnableVisualStyles();
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        protected override void FinishInitialization()
+        {
+            this.InternalStartup();
+            this.OnStartup();
+        }
+
+        [System.Diagnostics.DebuggerNonUserCode()]
         internal void InternalStartup()
         {
+            this.Startup += new System.EventHandler(ThisAddIn_Startup);
+            this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
         }
     }
 }
 #pragma warning restore 414
+
 
