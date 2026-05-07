@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.0.1-orange.svg)](https://github.com/ProgrammerNomad/MailMergeKit/releases/tag/v0.0.1)
-[![Office](https://img.shields.io/badge/Office-2016%20%7C%202019%20%7C%202021%20%7C%20365-blue.svg)](#system-requirements)
+[![Office](https://img.shields.io/badge/Office-2007%20SP2%2B-blue.svg)](#system-requirements)
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](#system-requirements)
 
 ---
@@ -35,11 +35,13 @@ MailMergeKit adds a **"Send via MailMergeKit"** button to Word's **Mailings** ta
 | Requirement | Details |
 |---|---|
 | **OS** | Windows 10 or later |
-| **Word** | Microsoft Word 2016 / 2019 / 2021 / 365 (desktop) |
-| **Outlook** | Microsoft Outlook 2016 / 2019 / 2021 / 365 (desktop, must be open) |
+| **Word** | Microsoft Word 2007 SP2 / 2010 / 2013 / 2016 / 2019 / 2021 / 365 (desktop) |
+| **Outlook** | Microsoft Outlook 2007 SP2 / 2010 / 2013 / 2016 / 2019 / 2021 / 365 (desktop, must be open) |
 | **Runtime** | [VSTO Runtime](https://aka.ms/vsto-runtime) - installed automatically by setup.exe |
 
 > **Web versions of Word/Outlook (browser) are not supported.** Requires the desktop Office apps installed on Windows.
+>
+> **Office 2007 users:** Service Pack 2 (SP2) or later is required. Office 2007 RTM and SP1 are not supported by the VSTO Runtime.
 
 ---
 

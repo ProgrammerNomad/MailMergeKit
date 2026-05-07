@@ -165,7 +165,7 @@
     <PublisherName>
     </PublisherName>
     <ProductName>MailMergeKit</ProductName>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <ApplicationVersion>0.0.2.0</ApplicationVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PublishUrl>publish\</PublishUrl>
