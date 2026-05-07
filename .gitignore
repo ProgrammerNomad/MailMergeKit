@@ -86,3 +86,4 @@ $RECYCLE.BIN/
 # Logs
 logs/
 *.log
+*.zip
