@@ -3,7 +3,7 @@
 > A Microsoft Word add-in that creates personalized Outlook draft emails using Word's mail merge data source - giving you full review control before sending.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.0.1-orange.svg)](https://github.com/ProgrammerNomad/MailMergeKit/releases/tag/v0.0.1)
+[![Version](https://img.shields.io/badge/version-0.0.2-orange.svg)](https://github.com/ProgrammerNomad/MailMergeKit/releases/tag/v0.0.2)
 [![Office](https://img.shields.io/badge/Office-2007%20SP2%2B-blue.svg)](#system-requirements)
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](#system-requirements)
 
@@ -17,7 +17,7 @@ MailMergeKit adds a **"Send via MailMergeKit"** button to Word's **Mailings** ta
 
 ---
 
-## Features (v0.0.1)
+## Features (v0.0.2)
 
 - **Word ribbon button** - appears in the Mailings tab, zero extra setup
 - **Reads Word's native mail merge data source** - works with Excel, CSV, Access, or any source Word supports
@@ -47,8 +47,8 @@ MailMergeKit adds a **"Send via MailMergeKit"** button to Word's **Mailings** ta
 
 ## Installation
 
-1. Go to the [Releases page](https://github.com/ProgrammerNomad/MailMergeKit/releases/tag/v0.0.1)
-2. Download **`MailMergeKit-v0.0.1-installer.zip`**
+1. Go to the [Releases page](https://github.com/ProgrammerNomad/MailMergeKit/releases/tag/v0.0.2)
+2. Download **`MailMergeKit-v0.0.2-installer.zip`**
 3. Extract the zip
 4. Run **`setup.exe`**
 5. Follow the prompts - the VSTO runtime installs automatically if missing
@@ -173,10 +173,10 @@ cd MailMergeKit
 ```powershell
 & "C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\MSBuild.exe" `
   "MailMergeKit.sln" /t:Publish /p:Configuration=Release /p:Platform="Any CPU" `
-  /p:PublishDir="src\MailMergeKit.WordAddin\publish\" /p:ApplicationVersion="0.0.1.0"
+  /p:PublishDir="src\MailMergeKit.WordAddin\publish\" /p:ApplicationVersion="0.0.2.0"
 
 Compress-Archive -Path "src\MailMergeKit.WordAddin\publish\*" `
-  -DestinationPath "MailMergeKit-v0.0.1-installer.zip" -Force
+  -DestinationPath "MailMergeKit-v0.0.2-installer.zip" -Force
 ```
 
 ---
